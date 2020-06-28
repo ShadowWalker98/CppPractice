@@ -15,7 +15,18 @@ int main() {
         }
     };
     // Stack Allocation (Compile Time)
-    someObject pSomeObject[10];
+    //someObject pSomeObject[10];
+
+    // Heap (run time allocation)
+    someObject **pSomeObject = new someObject*[10]{ 0 };
+
+    for(int i = 0; i < 10; i++)
+        pSomeObject[i] = new someObject();
+
+    for(int i = 0; i < 10; i++)
+        delete pSomeObject[i];
+
+    delete[] pSomeObject;
 
     /*
     int someArray[10] = {3, 6, 8, 9, 23, 45, 17, 49, 91, 34};
