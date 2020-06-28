@@ -1,6 +1,21 @@
 #include <iostream>
 using namespace std;
+
 int main() {
+    struct someObject
+    {
+        int x = 0xA3A2310;
+        int y = 0xB3B2B10;
+
+        someObject()
+        {
+            x = 0xC3C2C1C0;
+            y = 0xD3D2D1D0;
+
+        }
+    };
+    // Stack Allocation (Compile Time)
+    someObject pSomeObject[10];
 
     /*
     int someArray[10] = {3, 6, 8, 9, 23, 45, 17, 49, 91, 34};
