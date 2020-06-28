@@ -1,7 +1,53 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
+
+    struct someBaseObject {
+        virtual const char* IdentifyYourself() {
+            return "BaseObject";
+        }
+    };
+
+    struct someSubObjectA: public someBaseObject{
+        const char* IdentifyYourself() {
+            return "SubObjectA";
+        }
+    };
+
+    struct someSubObjectB: public someBaseObject{
+        const char* IdentifyYourself() {
+            return "SubObjectB";
+        }
+    };
+    //someBaseObject** someArray = new someBaseObject*[5];
+
+    vector<someBaseObject*> someVector;
+    someVector.push_back(new someSubObjectA());
+    someVector.push_back(new someSubObjectB());
+    someVector.push_back(new someSubObjectB());
+    someVector.push_back(new someBaseObject());
+    someVector.push_back(new someSubObjectA());
+
+    for(auto &a: someVector )
+        cout << a->IdentifyYourself() << endl;
+
+    for(auto &a: someVector )
+        delete a;
+
+    someVector.clear();
+
+//    someBaseObject objects[10];
+//    objects[3] = someSubObjectA();
+//
+//    // gets the identify yourself method from the base object
+//    for( int i = 0; i < 10; i++)
+//        cout << objects[i].IdentifyYourself() << endl;
+
+
+
+    /*
     struct someObject
     {
         int x = 0xA3A2310;
@@ -27,6 +73,8 @@ int main() {
         delete pSomeObject[i];
 
     delete[] pSomeObject;
+
+     */
 
     /*
     int someArray[10] = {3, 6, 8, 9, 23, 45, 17, 49, 91, 34};
